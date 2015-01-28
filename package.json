@@ -1,12 +1,11 @@
 {
   "name": "xml2html",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple XML to HTML table parser",
   "main": "index.js",
   "dependencies": {
     "cheerio": "^0.18.0",
-    "fs": "0.0.2",
-    "htmltidy": "0.0.6",
+    "js-beautify": "^1.5.4",
     "traverse": "^0.6.6",
     "xml2js": "^0.4.4"
   },

@@ -17,23 +17,14 @@ module.exports = function (params) {
       cheerio = require('cheerio'),
       traverse = require('traverse'),
       xml2js = require('xml2js'),
-      tidy = require('htmltidy').tidy,
+      beautify_html = require('js-beautify').html,
 
-      $ = cheerio.load('<html><table></table></html>');
+      $ = cheerio.load('<!DOCTYPE html><html><table></table></html>');
 
   function saveHtml(output, html) {
-    var opts = {
-        'doctype':'html5',
-        'tidy-mark':false,
-        'indent':true
-    }
-    tidy(html, opts, function(err, tidyHtml) {
+    fs.writeFile(output, beautify_html(html), function (err) {
       if (err) throw err;
-      console.log('Tidied up HTML!');
-      fs.writeFile(output, tidyHtml, function (err) {
-        if (err) throw err;
-        console.log('Saved HTML!');
-      });
+      console.log('Saved HTML!');
     });
   }
 
